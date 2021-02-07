@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import styles from '../../styles/LeaveAMessage.module.css'
 
@@ -10,6 +10,9 @@ function LeaveAMessage(props) {
   const [message, setMessage] = useState('')
 
   const isSendButtonDisabled = name.trim() == '' || phoneOrEmail.trim == '' || message.trim() == ''
+
+  const phoneOrEmailInput = useRef(null)
+  const messageTextArea = useRef(null)
 
   return (
     <div
@@ -30,6 +33,11 @@ function LeaveAMessage(props) {
           autoCorrect = 'off'
           className = {styles.nameInput}
           onChange = {event => setName(event.target.value)}
+          onKeyPress = {event => {
+            if (event.code == 'Enter') {
+              phoneOrEmailInput.current.focus()
+            }
+          }}
           placeholder = 'Name...'
           spellCheck = 'false'
         />
@@ -40,8 +48,14 @@ function LeaveAMessage(props) {
           className = {styles.phoneOrEmailInput}
           inputMode = 'email'
           onChange = {event => setPhoneOrEmail(event.target.value)}
+          onKeyPress = {event => {
+            if (event.code == 'Enter') {
+              messageTextArea.current.focus()
+            }
+          }}
           placeholder = 'Phone or Email...'
           spellCheck = 'false'
+          ref = {phoneOrEmailInput}
         />
 
         <textarea
@@ -49,6 +63,7 @@ function LeaveAMessage(props) {
           className = {styles.messageTextArea}
           onChange = {event => setMessage(event.target.value)}
           placeholder = 'Message...'
+          ref = {messageTextArea}
         />
         
         <a
