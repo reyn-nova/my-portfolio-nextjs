@@ -80,7 +80,12 @@ function LeaveAMessage(props) {
             pointerEvents: isSendButtonDisabled ? 'none' : 'visible'
           }}
         >
-          <div className = {styles.loader} />
+          {
+            isSubmittingMessage ?
+              <div className = {styles.loader} />
+              :
+              null
+          }
           
           Send
         </a>
