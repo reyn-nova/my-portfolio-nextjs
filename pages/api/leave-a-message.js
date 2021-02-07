@@ -12,7 +12,8 @@ const pool = new Pool({
   database: USED_DATABASE,
   password: USED_PASSWORD,
   port: USED_PORT,
-  url: USED_URI
+  url: USED_URI,
+  ssl: true
 })
 
 export default (req, res) => {
