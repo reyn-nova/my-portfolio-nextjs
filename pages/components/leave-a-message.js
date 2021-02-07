@@ -40,6 +40,7 @@ function LeaveAMessage(props) {
           }}
           placeholder = 'Name...'
           spellCheck = 'false'
+          value = {name}
         />
 
         <input
@@ -56,6 +57,7 @@ function LeaveAMessage(props) {
           placeholder = 'Phone or Email...'
           spellCheck = 'false'
           ref = {phoneOrEmailInput}
+          value = {phoneOrEmail}
         />
 
         <textarea
@@ -64,6 +66,7 @@ function LeaveAMessage(props) {
           onChange = {event => setMessage(event.target.value)}
           placeholder = 'Message...'
           ref = {messageTextArea}
+          value = {message}
         />
         
         <a
@@ -83,7 +86,32 @@ function LeaveAMessage(props) {
   )
 
   function submit() {
-    alert(name + ' ' + phoneOrEmail + ' ' + message)
+    fetch(
+      '../api/leave-a-message',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          phoneOrEmail,
+          message
+        })
+      }
+    )
+    .then(res => res.json())
+    .then(resJSON => {
+      alert(resJSON['message'])
+
+      if(resJSON['api_status'] == 1) {
+        setName('')
+        setPhoneOrEmail('')
+        setMessage('')
+      }
+    })
+    .catch(err => alert(err.toString()))
   }
 }
 
