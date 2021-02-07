@@ -8,8 +8,9 @@ function LeaveAMessage(props) {
   const [name, setName] = useState('')
   const [phoneOrEmail, setPhoneOrEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [isSubmittingMessage, setIsSubmittingMessage] = useState(false)
 
-  const isSendButtonDisabled = name.trim() == '' || phoneOrEmail.trim == '' || message.trim() == ''
+  const isSendButtonDisabled = isSubmittingMessage || name.trim() == '' || phoneOrEmail.trim == '' || message.trim() == ''
 
   const phoneOrEmailInput = useRef(null)
   const messageTextArea = useRef(null)
@@ -79,6 +80,8 @@ function LeaveAMessage(props) {
             pointerEvents: isSendButtonDisabled ? 'none' : 'visible'
           }}
         >
+          <div className = {styles.loader} />
+          
           Send
         </a>
       </div>
@@ -86,6 +89,8 @@ function LeaveAMessage(props) {
   )
 
   function submit() {
+    setIsSubmittingMessage(true)
+
     fetch(
       '../api/leave-a-message',
       {
@@ -101,17 +106,31 @@ function LeaveAMessage(props) {
         })
       }
     )
-    .then(res => res.json())
-    .then(resJSON => {
-      alert(resJSON['message'])
+    .then(res => res.text())
+    .then(resText => {
+      setIsSubmittingMessage(false)
 
-      if(resJSON['api_status'] == 1) {
-        setName('')
-        setPhoneOrEmail('')
-        setMessage('')
+      if(resText.trim()[0] == '{') {
+        const resJSON = JSON.parse(resText)
+
+        if(resJSON['api_status'] == 1) {
+          alert('Thank you, your message has been sent successfully')
+  
+          setName('')
+          setPhoneOrEmail('')
+          setMessage('')
+        } else {
+          alert(resJSON['message'])
+        } 
+      } else {
+        alert(resText)
       }
     })
-    .catch(err => alert(err.toString()))
+    .catch(err => {
+      setIsSubmittingMessage(false)
+
+      alert(err.toString())
+    })
   }
 }
 

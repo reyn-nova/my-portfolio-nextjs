@@ -6,10 +6,6 @@ const { env } = process
 
 const { DATABASE_URL, USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
-// const pool = new Pool({
-  
-// })
-
 const pool = new Pool({
   connectionString: DATABASE_URL,
   ssl: {

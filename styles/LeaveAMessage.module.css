@@ -79,7 +79,6 @@
   align-self: flex-end;
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   font-weight: bold;
@@ -87,9 +86,24 @@
   margin-top: 20px;
   padding: 10px;
   text-decoration-line: none;
-  width: 85px;
+  min-width: 100px;
 }
 
 .submitButton:hover {
   opacity: 0.6;
+}
+
+.loader {
+  border: 4px solid darkgray;
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 17.5px;
+  height: 17.5px;
+  margin-right: 10px;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
