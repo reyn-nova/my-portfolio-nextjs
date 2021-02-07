@@ -26,18 +26,26 @@ function LeaveAMessage(props) {
         className = {styles.formContainer}
       >
         <input
+          autoCapitalize = 'words'
+          autoCorrect = 'off'
           className = {styles.nameInput}
           onChange = {event => setName(event.target.value)}
           placeholder = 'Name...'
+          spellCheck = 'false'
         />
 
         <input
+          autoCapitalize = 'off'
+          autoCorrect = 'off'
           className = {styles.phoneOrEmailInput}
+          inputMode = 'email'
           onChange = {event => setPhoneOrEmail(event.target.value)}
           placeholder = 'Phone or Email...'
+          spellCheck = 'false'
         />
 
         <textarea
+          autoCapitalize = 'sentences'
           className = {styles.messageTextArea}
           onChange = {event => setMessage(event.target.value)}
           placeholder = 'Message...'
