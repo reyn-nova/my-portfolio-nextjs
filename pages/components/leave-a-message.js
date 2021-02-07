@@ -119,22 +119,22 @@ function LeaveAMessage(props) {
         const resJSON = JSON.parse(resText)
 
         if(resJSON['api_status'] == 1) {
-          alert('Thank you, your message has been sent successfully')
-  
           setName('')
           setPhoneOrEmail('')
           setMessage('')
+
+          setTimeout(() => alert('Thank you, your message has been sent successfully'), 500)
         } else {
-          alert(resJSON['message'])
+          setTimeout(() => alert(resJSON['message']), 500)
         } 
       } else {
-        alert(resText)
+        setTimeout(() => alert(resText), 500)
       }
     })
     .catch(err => {
       setIsSubmittingMessage(false)
 
-      alert(err.toString())
+      setTimeout(() => alert(err.toString()), 500)
     })
   }
 }
