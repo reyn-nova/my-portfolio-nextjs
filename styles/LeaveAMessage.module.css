@@ -1,7 +1,7 @@
 .container {
   align-items: center;
   background-color: rgb(247, 247, 247);
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
