@@ -15,6 +15,11 @@
   font-weight: bold;
 }
 
+.title::selection {
+  color: white;
+  background: crimson;
+}
+
 .formContainer {
   background-color: rgb(235, 235, 235);
   border-radius: 10px;
@@ -34,6 +39,11 @@
   width: 100%;
 }
 
+.nameInput::selection {
+  color: white;
+  background: crimson;
+}
+
 .phoneOrEmailInput {
   border: 0px solid transparent;
   border-radius: 5px;
@@ -41,6 +51,11 @@
   margin-top: 10px;
   padding: 5px;
   width: 100%;
+}
+
+.phoneOrEmailInput::selection {
+  color: white;
+  background: crimson;
 }
 
 .messageTextArea {
@@ -52,6 +67,11 @@
   padding: 5px;
   resize: none;
   width: 100%;
+}
+
+.messageTextArea::selection {
+  color: white;
+  background: crimson;
 }
 
 .submitButton {

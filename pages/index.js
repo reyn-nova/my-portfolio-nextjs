@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Reynald Prabha's Portfolio</title>
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
