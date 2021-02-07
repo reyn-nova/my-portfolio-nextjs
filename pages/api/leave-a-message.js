@@ -6,8 +6,6 @@ const { env } = process
 
 const { USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
-console.log("CHECK HERE...", USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI)
-
 const pool = new Pool({
   user: USED_USER,
   host: USED_HOST,
@@ -21,7 +19,7 @@ export default (req, res) => {
   const { name, phoneOrEmail, message } = req.body
 
   pool.query(
-    `INSERT INTO messages (name, phone-or-email, message) VALUES ($1, $2, $3)`,
+    `INSERT INTO messages (name, phone_or_email, message) VALUES ($1, $2, $3)`,
     [name, phoneOrEmail, message],
     (err, results) => {
       if(err) {
