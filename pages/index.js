@@ -110,11 +110,11 @@ export default function Home() {
           options = {[
             {
               title: 'Email',
-              url: 'mailto: rynvva@gmail.com'
+              url: `mailto: ${process.env['USED_EMAIL']}`
             },
             {
               title: 'GitHub',
-              url: 'https://github.com/reynald-prabha'
+              url: process.env['USED_GITHUB_URL']
             }
           ]}
         />
