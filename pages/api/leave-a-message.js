@@ -1,24 +1,31 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { Pool } from 'pg'
+import { Client } from 'pg'
 
 const { env } = process
 
-const { USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
+const { DATABASE_URL, USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
-const pool = new Pool({
-  user: USED_USER,
-  host: USED_HOST,
-  database: USED_DATABASE,
-  password: USED_PASSWORD,
-  port: USED_PORT,
-  url: USED_URI
+// const pool = new Pool({
+//   user: USED_USER,
+//   host: USED_HOST,
+//   database: USED_DATABASE,
+//   password: USED_PASSWORD,
+//   port: USED_PORT,
+//   url: USED_URI
+// })
+
+const client = new Client({
+  connectionString: DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 })
 
 export default (req, res) => {
   const { name, phoneOrEmail, message } = req.body
 
-  pool.query(
+  client.query(
     `INSERT INTO messages (name, phone_or_email, message) VALUES ($1, $2, $3)`,
     [name, phoneOrEmail, message],
     (err, results) => {
