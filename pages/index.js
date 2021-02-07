@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBuilding, faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding, faEnvelope, faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
 
 import styles from '../styles/Home.module.css'
 
@@ -12,7 +12,7 @@ import MyServices from './components/my-services'
 import ConnectWithMeOn from './components/connect-with-me-on'
 import LeaveAMessage from './components/leave-a-message'
 
-library.add(faBuilding, faProjectDiagram)
+library.add(faBuilding, faProjectDiagram, faEnvelope)
 
 export default function Home() {
   const myServicesId = 'my-services'
@@ -44,11 +44,11 @@ export default function Home() {
               icon: (
                 <FontAwesomeIcon
                   className = {styles.icon}
-                  icon = 'project-diagram'
+                  icon = 'envelope'
                 />
               ),
-              title: 'Connect With Me',
-              url: `#${connectWithMeId}`
+              title: 'Leave A Message',
+              url: `#${leaveAmessageId}`
             }
           ]}
         />
