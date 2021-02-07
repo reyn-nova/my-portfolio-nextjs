@@ -8,10 +8,10 @@ function SelfDetails(props) {
       className={styles.selfDetails}
     >
       <img
-        alt={photo.alt || 'Profile photo'}
+        alt={photo?.alt || ''}
         className={styles.selfPhoto}
         height="150"
-        src={photo.url}
+        src={photo?.url || ''}
         width="150"
       />
 
