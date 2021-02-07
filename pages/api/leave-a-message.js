@@ -7,19 +7,20 @@ const { env } = process
 const { DATABASE_URL, USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
 // const pool = new Pool({
-//   user: USED_USER,
-//   host: USED_HOST,
-//   database: USED_DATABASE,
-//   password: USED_PASSWORD,
-//   port: USED_PORT,
-//   url: USED_URI
+  
 // })
 
 const client = new Client({
   connectionString: DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  user: USED_USER,
+  host: USED_HOST,
+  database: USED_DATABASE,
+  password: USED_PASSWORD,
+  port: USED_PORT,
+  url: USED_URI
 })
 
 export default (req, res) => {
