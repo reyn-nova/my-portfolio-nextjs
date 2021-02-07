@@ -4,19 +4,19 @@ import { Pool } from 'pg'
 
 const { env } = process
 
-const { USER, HOST, DATABASE, PASSWORD, USED_PORT, URI } = env
+const { USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
 const pool = new Pool({
-  user: USER,
-  host: HOST,
-  database: DATABASE,
-  password: PASSWORD,
+  user: USED_USER,
+  host: USED_HOST,
+  database: USED_DATABASE,
+  password: USED_PASSWORD,
   port: USED_PORT,
-  url: URI
+  url: USED_URI
 })
 
 export default (req, res) => {
-  console.log("CHECK HERE...", USER, HOST, DATABASE, PASSWORD, USED_PORT, URI)
+  console.log("CHECK HERE...", USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI)
 
   const { name, phoneOrEmail, message } = req.body
 
