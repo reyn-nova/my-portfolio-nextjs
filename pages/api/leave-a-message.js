@@ -4,14 +4,12 @@ import { Pool } from 'pg'
 
 const { env } = process
 
-console.log(env)
-
 const pool = new Pool({
   user: env['USER'],
   host: env['HOST'],
   database: env['DATABASE'],
   password: env['PASSWORD'],
-  port: env['PORT'],
+  port: 5432,
   url: env['URI']
 })
 
