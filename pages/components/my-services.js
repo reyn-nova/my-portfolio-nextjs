@@ -18,7 +18,7 @@ function MyServices(props) {
         className={styles.portfolioContainer}
       >
         {
-          services.map((service, serviceIndex) => (
+          (services || []).map((service, serviceIndex) => (
             <div
               className={styles.portfolio}
               key = {serviceIndex}

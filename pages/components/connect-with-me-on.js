@@ -18,7 +18,7 @@ function ConnectWithMeOn(props) {
         className = {styles.mediasContainer}
       >
         {
-          options.map((option, optionIndex) => (
+          (options || []).map((option, optionIndex) => (
             <a
               className = {styles.mediaButton}
               href = {option.url}
