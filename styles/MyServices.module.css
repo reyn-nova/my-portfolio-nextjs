@@ -1,6 +1,6 @@
 .portfolioBackground {
   align-items: center;
-  background-color: rgb(247, 247, 247);;
+  background-color: white;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 60px);
@@ -31,7 +31,7 @@
 }
 
 .portfolio {
-  background-color: white;
+  background-color: rgb(247, 247, 247);
   border-radius: 20px;
   width: 250px;
   margin: 10px;

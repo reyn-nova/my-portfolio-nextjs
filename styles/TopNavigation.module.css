@@ -25,8 +25,8 @@
 }
 
 .button:hover {
-  background-color: rgb(50, 50, 50);
-  color: crimson;
+  background-color: crimson;
+  color: white;
 }
 
 .iconContainer {

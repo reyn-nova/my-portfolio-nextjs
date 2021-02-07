@@ -10,12 +10,14 @@ import TopNavigation from './components/top-navigation'
 import SelfDetails from './components/self-details'
 import MyServices from './components/my-services'
 import ConnectWithMeOn from './components/connect-with-me-on'
+import LeaveAMessage from './components/leave-a-message'
 
 library.add(faBuilding, faProjectDiagram)
 
 export default function Home() {
   const myServicesId = 'my-services'
-	const connectWithMeId = 'connect-with-me'
+	const connectWithMeId = 'connect-with-me-on'
+  const leaveAmessageId = 'leave-a-message'
 
   return (
     <>
@@ -97,6 +99,10 @@ export default function Home() {
               subtitle: "I love teach anyone from zero to be able create something."
             }
           ]}
+        />
+
+        <LeaveAMessage
+          id = {leaveAmessageId}
         />
 
         <ConnectWithMeOn
