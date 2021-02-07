@@ -6,6 +6,8 @@ const { env } = process
 
 const { USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI } = env
 
+console.log("CHECK HERE...", USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI)
+
 const pool = new Pool({
   user: USED_USER,
   host: USED_HOST,
@@ -16,8 +18,6 @@ const pool = new Pool({
 })
 
 export default (req, res) => {
-  console.log("CHECK HERE...", USED_USER, USED_HOST, USED_DATABASE, USED_PASSWORD, USED_PORT, USED_URI)
-
   const { name, phoneOrEmail, message } = req.body
 
   pool.query(
